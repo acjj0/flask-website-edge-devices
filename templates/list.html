@@ -1,0 +1,67 @@
+{% extends "layout.html" %} {% block styles %} {% endblock %} {% block scripts
+%} {% endblock %} {% block content %}
+<header>
+  <h1>All Birds Detected</h1>
+</header>
+
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Event Id</th>
+      <th scope="col">E-Bird Code</th>
+      <th scope="col">Confidence</th>
+      <th scope="col">Timestamp</th>
+      <th scope="col">Edge Device ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for (observation, common_name) in observations %}
+    <tr>
+      <td>{{ observation.obs_id }}</td>
+      <td><a href="https://ebird.org/species/{{ observation.ebird_code }}">{{ common_name }} ({{ observation.ebird_code }})</a></td>
+      <td>{{ (observation.confidence * 100) | round(0) | int }}%</td>
+      <td>{{ observation.when_heard }}</td>
+      <td>{{ observation.device_id }}</td>
+      <td>
+          <a style="text-decoration: none"
+             href="/observation/delete/{{observation.obs_id}}"
+             alt="Delete {{observation.obs_id}}"
+             onclick="return confirm('Are you sure?')">&#x274C;
+          </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if pages %}
+<nav aria-label="Page navigation example col-4">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="/observations/{{ pages.begin }}/{{limit}}">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">First</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/observations/{{ pages.prev }}/{{limit}}">
+        <span aria-hidden="true">&lt;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/observations/{{ pages.next }}/{{limit}}">
+        <span class="sr-only">Next</span>
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/observations/{{ pages.end }}/{{limit}}">
+        <span class="sr-only">Last</span>
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endif %} {% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "header.html" %}
+
+    <!-- Styles -->
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <!-- <link href="{{ url_for('static', filename='./css/reset.css') }}" rel="stylesheet" /> -->
+    {% block styles %} {% endblock %}
+  </head>
+  <body>
+    <!-- NAV BAR GOES HERE -->
+    <div class="container">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="
+            d-flex
+            align-items-center
+            mb-3 mb-md-0
+            me-md-auto
+            text-dark text-decoration-none
+          "
+        >
+          <span class="fs-1"><img src="{{url_for('static', filename='images/homelink.png')}}" width="10%" height="10%">Welcome to Edgy Birds</span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="/latest" class="nav-link">Latest Bird Heard</a>
+          </li>
+        </ul>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="/observations" class="nav-link">History</a>
+          </li>
+        </ul>
+      </header>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="container">
+      {% if errors %} {% for error in errors %}
+      <div class="alert alert-danger" role="alert">{{error}}</div>
+      {% endfor %} {% elif messages %} {% for message in messages %}
+      <div class="alert alert-success" role="alert">{{message}}</div>
+      {% endfor %} {% endif %} {% block content %} {% endblock %}
+    </main>
+
+    <!-- FOOTER GOES HERE -->
+    <div class="container">
+      <footer
+        class="
+          d-flex
+          flex-wrap
+          justify-content-between
+          align-items-center
+          py-3
+          my-4
+          border-top
+        "
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <span class="mb-3 mb-md-0 text-muted"
+            >Bird Observations From Edge Devices</span
+          >
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    {% block scripts %} {% endblock %}
+  </body>
+</html>

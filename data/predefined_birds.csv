@@ -1,0 +1,11 @@
+obs_id,ebird_code,confidence,when_heard,device_id
+1,houwre,0.11,2021-12-04 14:45:56,jetson-nano-1
+2,eursta,0.74,2021-08-23 19:27:06,raspberry-pi-1
+3,rewbla,0.06,2022-04-10 22:18:21,raspberry-pi-1
+4,redcro,0.18,2022-06-08 13:03:50,raspberry-pi-1
+5,gbwwre1,0.84,2021-05-07 18:58:35,jetson-nano-1
+6,eursta,0.7,2022-02-04 15:47:30,jetson-nano-1
+7,rewbla,0.49,2021-09-07 04:46:30,jetson-nano-1
+8,rewbla,0.53,2022-06-30 11:36:08,jetson-nano-1
+9,newbla,0.23,2021-05-16 22:42:16,jetson-nano-1
+10,spotow,0.3,2021-07-29 04:40:05,jetson-nano-1
